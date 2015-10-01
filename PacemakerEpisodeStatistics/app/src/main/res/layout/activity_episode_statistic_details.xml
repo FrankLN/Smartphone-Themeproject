@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="android.zonro.com.pacemakerepisodestatistics.EpisodeStatisticDetails">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewEpisodeType"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/episode_type"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewEpisodeTypeSet"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/textViewEpisodeType"
+        android:layout_marginTop="30dp"
+        android:text="textxxxtxttx"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewAmount"
+        android:layout_below="@+id/textViewEpisodeType"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:text="@string/amount"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewAmountSet"
+        android:layout_below="@+id/textViewEpisodeType"
+        android:layout_marginTop="30dp"
+        android:text="21"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/textViewAmount"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewPercent"
+        android:layout_below="@+id/textViewAmount"
+        android:layout_marginTop="30dp"
+        android:text="@string/percent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewPercentSet"
+        android:layout_below="@+id/textViewAmount"
+        android:layout_marginTop="30dp"
+        android:text="50 %"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/textViewPercent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewGraf"
+        android:layout_below="@+id/textViewPercent"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ImageButton01"
+        android:text="@string/graph"/>
+
+    <ImageButton
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/ImageButton01"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textViewPercent"
+        android:src="@drawable/btn_graph"
+        android:scaleType="fitCenter"
+        android:onClick="SeeGraph"/>
+</RelativeLayout>
