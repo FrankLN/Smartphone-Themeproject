@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PacemakerEpisodeStatistics</string>
+    <string name="amount">Antal</string>
+    <string name="episode_type">Episodetype</string>
+    <string name="graph">Se graf</string>
+    <string name="percent">Procent</string>
+</resources>

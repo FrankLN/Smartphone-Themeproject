@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">PacemakerEpisodeStatistics</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_episode_statistic_details">EpisodeStatisticDetails</string>
+
+    <string name="episode_type">Episode type:</string>
+    <string name="amount">Amount:</string>
+    <string name="percent">Percentage:</string>
+    <string name="graph">See graph</string>
 </resources>
