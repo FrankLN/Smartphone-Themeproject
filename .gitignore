@@ -7,8 +7,8 @@
 *.o
 *.so
 *.suo
-*obj*
-*bin*
+*obj/*
+*bin/*
 *.user
 
 # Packages #
@@ -29,7 +29,6 @@
 ######################
 *.log
 *.sql
-*.sqlite
 
 # OS generated files #
 ######################

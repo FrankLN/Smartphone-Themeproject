@@ -2,15 +2,20 @@ package android.zonro.com.pacemakerepisodestatistics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class EpisodeStatistic extends AppCompatActivity {
+    SqlConnect db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_episode_statistic);
+
+        db = SqlConnect.GetSqlConnect(this);
+        Log.d("SqlTest", "" + db.checkDatabase());
     }
 
     @Override
