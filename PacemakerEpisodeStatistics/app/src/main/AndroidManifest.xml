@@ -21,12 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".Service"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
         <service
             android:name=".DataService"
             android:enabled="true"
