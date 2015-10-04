@@ -62,12 +62,14 @@ public class SqlConnect extends SQLiteOpenHelper {
     {
         PacemakerDataObject curObj;
 
+
         try {
             Cursor c1 = sdb.rawQuery("SELECT * FROM PacemakerData", null);
+            curList.clear();
 
             while (c1.moveToNext()) {
                 curObj = new PacemakerDataObject();
-
+                Log.d("UpdateData", c1.getString(1) + " " + c1.getString(2) + " " + c1.getString(3));
                 curObj.setEpisodeType(c1.getString(1));
                 curObj.setTransmissionsId(Integer.parseInt(c1.getString(2)));
                 curObj.setDate(c1.getString(3));
