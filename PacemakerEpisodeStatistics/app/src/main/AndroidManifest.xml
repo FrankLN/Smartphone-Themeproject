@@ -10,6 +10,11 @@
         <activity
             android:name=".EpisodeStatistic"
             android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".EpisodeStatisticDetails"
+            android:label="@string/title_activity_episode_statistic_details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
