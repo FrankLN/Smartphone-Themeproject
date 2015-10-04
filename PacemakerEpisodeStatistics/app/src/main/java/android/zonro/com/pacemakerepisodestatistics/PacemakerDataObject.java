@@ -50,7 +50,7 @@ public class PacemakerDataObject {
         date_ = date;
     }
 
-    public ArrayList<PacemakerDataObject> getList()
+    public static ArrayList<PacemakerDataObject> getList()
     {
         ArrayList<PacemakerDataObject> result = new ArrayList<PacemakerDataObject>();
 
