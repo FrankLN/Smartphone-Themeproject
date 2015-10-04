@@ -14,9 +14,8 @@ public class EpisodeStatistic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_episode_statistic);
 
-        db = SqlConnect.GetSqlConnect(this);
-        Log.d("SqlTest", "" + db.checkDatabase());
-    }
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

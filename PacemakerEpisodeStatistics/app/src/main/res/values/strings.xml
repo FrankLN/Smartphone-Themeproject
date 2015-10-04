@@ -8,4 +8,7 @@
     <string name="amount">Amount:</string>
     <string name="percent">Percentage:</string>
     <string name="graph">See graph</string>
+    <string name="textone">Event 1</string>
+    <string name="texttwo">Event 2</string>
+    <string name="textthree">Event 3</string>
 </resources>
