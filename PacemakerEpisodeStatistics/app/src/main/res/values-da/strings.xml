@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PacemakerEpisodeStatistics</string>
-    <string name="amount">Antal</string>
-    <string name="episode_type">Episodetype</string>
+    <string name="amount">Antal:</string>
+    <string name="episode_type">Episodetype:</string>
     <string name="graph">Se graf</string>
-    <string name="percent">Procent</string>
+    <string name="percent">Procent:</string>
+
+    <string name ="jan">Januar</string>
+    <string name ="feb">Februar</string>
+    <string name ="mar">Marts</string>
+    <string name ="apr">April</string>
+    <string name ="may">Maj</string>
+    <string name ="jun">Juni</string>
+    <string name ="jul">Juli</string>
+    <string name ="aug">August</string>
+    <string name ="sep">September</string>
+    <string name ="oct">Oktober</string>
+    <string name ="nov">November</string>
+    <string name ="dec">December</string>
 </resources>

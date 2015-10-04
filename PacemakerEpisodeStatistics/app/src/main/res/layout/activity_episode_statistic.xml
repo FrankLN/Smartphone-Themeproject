@@ -29,51 +29,10 @@
             android:linksClickable="true" />
 
         <ListView
-            android:layout_width="190dp"
+            android:layout_width="363dp"
             android:layout_height="wrap_content"
             android:id="@+id/listViewOne"
             android:scrollingCache="false" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/linearLayout2"
-        android:id="@+id/linearLayout3">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/texttwo"
-            android:id="@+id/textListTwo" />
-
-        <ListView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/listViewTwo" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/linearLayout3"
-        android:layout_toRightOf="@+id/linearLayout3">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/textthree"
-            android:id="@+id/textViewThree" />
-
-        <ListView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/listViewThree" />
     </LinearLayout>
 
 </RelativeLayout>
