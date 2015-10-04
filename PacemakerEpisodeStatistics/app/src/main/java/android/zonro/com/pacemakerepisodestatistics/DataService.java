@@ -8,10 +8,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataService extends Service {
     // Binder given to clients
     private final IBinder mBinder = new LocalBinder();
+    private DataService ins = this;
 
     /**
      * Class used for the client Binder.  Because we know this service always
@@ -48,22 +50,23 @@ public class DataService extends Service {
                     e.printStackTrace();
                 }
 
-                Intent intent = new Intent();
-                LocalBroadcastManager.getInstance(DataService.this).sendBroadcast(intent);
+                Intent intent = new Intent("0");
+                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
             }
         }).start();
     }
 
     public void update()
     {
-        Intent intent = new Intent();
-        LocalBroadcastManager.getInstance(DataService.this).sendBroadcast(intent);
+        Intent intent = new Intent("0");
+        LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
     }
 
-    private ArrayList<PacemakerDataObject> curList = new ArrayList<PacemakerDataObject>();
+    private List<PacemakerDataObject> curList = new ArrayList<PacemakerDataObject>();
 
-    public ArrayList<PacemakerDataObject> getData()
+    public List<PacemakerDataObject> getData()
     {
+        sCon.updateData();
         curList = sCon.getCurList();
         return curList;
     }

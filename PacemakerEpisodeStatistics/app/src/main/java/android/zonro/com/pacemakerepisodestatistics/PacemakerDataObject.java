@@ -50,6 +50,11 @@ public class PacemakerDataObject {
         date_ = date;
     }
 
+    public String toString1()
+    {
+        return episodeType_;
+    }
+
     public static ArrayList<PacemakerDataObject> getList()
     {
         ArrayList<PacemakerDataObject> result = new ArrayList<PacemakerDataObject>();
