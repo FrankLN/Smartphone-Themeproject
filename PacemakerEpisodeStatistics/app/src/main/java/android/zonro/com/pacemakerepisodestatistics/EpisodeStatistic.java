@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.pm.ActivityInfo;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,6 +38,8 @@ public class EpisodeStatistic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_episode_statistic);
 
+
+
         lv1 = (ListView)findViewById(R.id.listViewOne);
         lv2 = (ListView)findViewById(R.id.listViewTwo);
         lv3 = (ListView)findViewById(R.id.listViewThree);
@@ -47,7 +51,9 @@ public class EpisodeStatistic extends AppCompatActivity {
                 List<String> ep = new ArrayList<String>();
                 for(int i = 0; i < list.size(); i++)
                 {
-                    ep.add(list.get(i).getEpisodeType());
+                    if(!ep.contains(list.get(i).getEpisodeType())) {
+                        ep.add(list.get(i).getEpisodeType());
+                    }
                 }
 
                 ArrayAdapter<String> obj = new ArrayAdapter<String>(ins, android.R.layout.simple_list_item_1, ep);
@@ -63,13 +69,16 @@ public class EpisodeStatistic extends AppCompatActivity {
         Intent intent = new Intent(this, DataService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
-
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("test", "" + view.getTransitionName());
+            }
+        });
 
 
 
     }
-
-
 
     @Override
     protected void onStop() {
