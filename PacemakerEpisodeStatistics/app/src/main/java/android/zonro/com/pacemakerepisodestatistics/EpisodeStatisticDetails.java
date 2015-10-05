@@ -32,7 +32,7 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     public int amount;
     public int percentage;
 
-    ArrayList<PacemakerDataObject> PacemakerObjects = new ArrayList<PacemakerDataObject>();
+    ArrayList<String> PacemakerDates = new ArrayList<String>();
     PacemakerDataObject PO;
 
     public String dataString;
@@ -58,32 +58,31 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         episodeType = intent.getStringExtra("episodeType");
         amount = intent.getIntExtra("transmissions", 0);
         percentage = intent.getIntExtra("procentTransmission", 0);
+        PacemakerDates = intent.getStringArrayListExtra("dates");
 
         TVepisodeType.setText(episodeType);
         TVamount.setText(String.valueOf(amount));
         TVpercentage.setText(String.valueOf(percentage));
 
-        PacemakerObjects = PO.getList();
-
-        for(int h=0; h<PacemakerObjects.size(); h++)
+        for(int h=0; h<PacemakerDates.size(); h++)
         {
             //upToNCharacters from stackoverflow --- http://stackoverflow.com/questions/1583940/up-to-first-n-characters
-            String year = PacemakerObjects.get(h).getDate().substring(0, Math.min(PacemakerObjects.get(h).getDate().length(), 4));
+            String year = PacemakerDates.get(h).substring(0, Math.min(PacemakerDates.get(h).length(), 4));
 
             if(Integer.parseInt(year) > newestyear)
             newestyear = Integer.parseInt(year);
         }
 
 
-        for(int i = 0; i< PacemakerObjects.size(); i++)
+        for(int i = 0; i< PacemakerDates.size(); i++)
         {
-            String year = PacemakerObjects.get(i).getDate().substring(0, Math.min(PacemakerObjects.get(i).getDate().length(), 4));
+            String year = PacemakerDates.get(i).substring(0, Math.min(PacemakerDates.get(i).length(), 4));
 
-            if(Integer.parseInt(year) == newestyear && PacemakerObjects.get(i).getEpisodeType() == episodeType)
+            if(Integer.parseInt(year) == newestyear)
             {
 
-                char first = PacemakerObjects.get(i).getDate().charAt(4);
-                char second = PacemakerObjects.get(i).getDate().charAt(5);
+                char first = PacemakerDates.get(i).charAt(4);
+                char second = PacemakerDates.get(i).charAt(5);
 
                 String temp = String.valueOf(first) + String.valueOf(second);
 
