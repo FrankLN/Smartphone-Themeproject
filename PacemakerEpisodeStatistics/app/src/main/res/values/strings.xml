@@ -9,9 +9,9 @@
     <string name="percent">Percentage:</string>
     <string name="graph">See graph</string>
 
-    <string name="textone">Event 1</string>
-    <string name="texttwo">Event 2</string>
-    <string name="textthree">Event 3</string>
+    <string name="textone">Episode type</string>
+    <string name="texttwo">Transmissions</string>
+    <string name="textthree">Transmission %</string>
 
 
     <string name ="jan">January</string>
