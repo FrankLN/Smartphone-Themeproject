@@ -2,6 +2,7 @@ package android.zonro.com.pacemakerepisodestatistics;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,6 +49,7 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_episode_statistic_details);
 
         TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
@@ -170,12 +172,26 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     public void onBackPressed() {
         if(showingGraph == 1) {
             setContentView(R.layout.activity_episode_statistic_details);
+
+            TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
+            TVamount = (TextView)findViewById(R.id.textViewAmountSet);
+            TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
+
+            Intent intent = getIntent();
+            episodeType = intent.getStringExtra("episodeType");
+            amount = intent.getIntExtra("transmissions", 0);
+            percentage = intent.getIntExtra("procentTransmission", 0);
+
+            TVepisodeType.setText(episodeType);
+            TVamount.setText(String.valueOf(amount));
+            TVpercentage.setText(String.valueOf(percentage));
             showingGraph = 0;
         }
 
         else
             super.onBackPressed();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
