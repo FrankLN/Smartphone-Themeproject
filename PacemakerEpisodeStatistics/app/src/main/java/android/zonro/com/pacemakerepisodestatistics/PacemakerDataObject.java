@@ -61,6 +61,7 @@ public class PacemakerDataObject {
 
         result.add(new PacemakerDataObject("Aterial Fibrillation", 1, "20151220113452"));
         result.add(new PacemakerDataObject("Shock", 1, "20150926103452"));
+        result.add(new PacemakerDataObject("Aterial Fibrillation", 1, "20151220113352"));
         result.add(new PacemakerDataObject("Other", 2, "20150927213452"));
 
         return result;
