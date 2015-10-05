@@ -34,17 +34,21 @@ public class EpisodeStatistic extends AppCompatActivity {
     ListView lv2;
     ListView lv3;
 
+    List<PacemakerDataObject> list;
+    List<String> ep;
+    List<Integer> transmissions;
+    List<Integer> procentTransmission;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("EpisodeStatistic", "" + getResources().getConfiguration().orientation);
+        Log.d("test", "" + getResources().getConfiguration().orientation);
         if (getResources().getConfiguration().orientation == 1)
-            setContentView(R.layout.activity_episode_statistic);
+            setContentView(R.layout.activity_episode_statistic_port);
         else if (getResources().getConfiguration().orientation == 2)
             setContentView(R.layout.activity_episode_statistic_land);
         else
             setContentView(R.layout.activity_episode_statistic_port);
-
 
         lv1 = (ListView) findViewById(R.id.listViewOne);
         lv2 = (ListView) findViewById(R.id.listViewTwo);
@@ -53,15 +57,15 @@ public class EpisodeStatistic extends AppCompatActivity {
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                List<PacemakerDataObject> list = mService.getData();
-                List<String> ep = new ArrayList<String>();
+                list = mService.getData();
+                ep = new ArrayList<String>();
                 for (int i = 0; i < list.size(); i++) {
                     if (!ep.contains(list.get(i).getEpisodeType())) {
                         ep.add(list.get(i).getEpisodeType());
                     }
                 }
 
-                List<Integer> transmissions = new ArrayList<Integer>();
+                transmissions = new ArrayList<Integer>();
                 for (int i = 0; i < ep.size(); i++) {
                     int count = 0;
                     List<Integer> ids = new ArrayList<Integer>();
@@ -75,7 +79,7 @@ public class EpisodeStatistic extends AppCompatActivity {
                     transmissions.add(count);
                 }
 
-                List<Integer> procentTransmissions = new ArrayList<Integer>();
+                procentTransmission = new ArrayList<Integer>();
                 for (int i = 0; i < ep.size(); i++) {
                     int count = 0;
                     List<Integer> ids = new ArrayList<Integer>();
@@ -88,12 +92,12 @@ public class EpisodeStatistic extends AppCompatActivity {
 
                     int percent = Math.round((float) (transmissions.get(i) * 100) / count);
                     Log.d("EpisodeStatistic", ep.get(i).toString() + ": " + percent);
-                    procentTransmissions.add(percent);
+                    procentTransmission.add(percent);
                 }
 
                 ArrayAdapter<String> episodeTypeList = new ArrayAdapter<String>(ins, android.R.layout.simple_list_item_1, ep);
                 ArrayAdapter<Integer> transmissionList = new ArrayAdapter<Integer>(ins, android.R.layout.simple_list_item_1, transmissions);
-                ArrayAdapter<Integer> procentTransmissionList = new ArrayAdapter<Integer>(ins, android.R.layout.simple_list_item_1, procentTransmissions);
+                ArrayAdapter<Integer> procentTransmissionList = new ArrayAdapter<Integer>(ins, android.R.layout.simple_list_item_1, procentTransmission);
 
                 if (lv1 != null) {
                     lv1.setAdapter(episodeTypeList);
@@ -121,26 +125,23 @@ public class EpisodeStatistic extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Log.d("test", "" + ((TextView) view).getText().toString());
 
+                    ArrayList<String> dates = new ArrayList<String>();
+                    for(int i=0;i<list.size();i++)
+                    {
+                        if(ep.get(position).equals(list.get(i).getEpisodeType()))
+                            dates.add(list.get(i).getDate());
+                    }
+
                     Intent intent = new Intent(ins, EpisodeStatisticDetails.class);
-                    intent.putExtra("episodeType", ((TextView) view).getText().toString());
-                    intent.putExtra("transmissions", 2);
-                    intent.putExtra("procentTransmission", 5);
+                    intent.putExtra("episodeType", ep.get(position).toString());
+                    intent.putExtra("transmissions", transmissions.get(position));
+                    intent.putExtra("procentTransmission", procentTransmission.get(position));
+                    intent.putStringArrayListExtra("dates", dates);
 
                     startActivity(intent);
                 }
             });
         }
-    }
-
-    protected void onResume(){
-        super.onResume();
-        Log.d("EpisodeStatistic", "" + getResources().getConfiguration().orientation);
-        if(getResources().getConfiguration().orientation == 1)
-            setContentView(R.layout.activity_episode_statistic_port);
-        else if(getResources().getConfiguration().orientation == 2)
-            setContentView(R.layout.activity_episode_statistic_land);
-        else
-            setContentView(R.layout.activity_episode_statistic);
     }
 
     @Override

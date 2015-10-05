@@ -59,7 +59,7 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         amount = intent.getIntExtra("transmissions", 0);
         percentage = intent.getIntExtra("procentTransmission", 0);
         PacemakerDates = intent.getStringArrayListExtra("dates");
-
+        
         TVepisodeType.setText(episodeType);
         TVamount.setText(String.valueOf(amount));
         TVpercentage.setText(String.valueOf(percentage));
