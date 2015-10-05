@@ -95,4 +95,5 @@
         android:layout_alignTop="@+id/textViewAmountSet"
         android:layout_toRightOf="@+id/textViewEpisodeTypeSet"
         android:layout_toEndOf="@+id/textViewEpisodeTypeSet" />
+
 </RelativeLayout>

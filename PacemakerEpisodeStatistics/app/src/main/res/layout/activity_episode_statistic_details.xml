@@ -4,6 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/statistic_details_layout"
     tools:context="android.zonro.com.pacemakerepisodestatistics.EpisodeStatisticDetails">
 
 
@@ -95,4 +96,28 @@
         android:src="@drawable/btn_graph"
         android:scaleType="fitCenter"
         android:onClick="SeeGraph"/>
+
+    <ImageButton
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/ImageButton02"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/ImageButton01"
+        android:src="@drawable/picturebtn"
+        android:scaleType="fitCenter"
+        android:onClick="StartPictures" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:text="@string/seepicz"
+        android:layout_alignBottom="@+id/ImageButton02"
+        android:layout_alignLeft="@+id/textViewGraf"
+        android:layout_alignStart="@+id/textViewGraf"
+        android:layout_marginBottom="19dp" />
+
 </RelativeLayout>

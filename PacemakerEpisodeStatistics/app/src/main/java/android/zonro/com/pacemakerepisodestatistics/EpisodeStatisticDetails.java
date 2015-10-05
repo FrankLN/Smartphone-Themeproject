@@ -1,10 +1,15 @@
 package android.zonro.com.pacemakerepisodestatistics;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.PersistableBundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +30,9 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     public TextView TVepisodeType;
     public TextView TVamount;
     public TextView TVpercentage;
+
+    PictureFragment frag;
+    FragmentManager manager;
 
     public float cjan, cfeb, cmar, capr, cmay, cjun, cjul, caug, csep, coct, cnov, cdec;
     int newestyear;
@@ -51,6 +59,9 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_episode_statistic_details);
+
+        frag = new PictureFragment();
+        manager  = getFragmentManager();
 
         TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
         TVamount = (TextView)findViewById(R.id.textViewAmountSet);
@@ -168,6 +179,19 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         showingGraph = 1;
     }
 
+    public void StartPictures(View v)
+    {
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.statistic_details_layout, frag,"picfrag");
+        transaction.commit();
+    }
+
+    public void RemovePictures()
+    {
+        if(frag != null)
+            manager.beginTransaction().remove(frag).commit();
+    }
+
     @Override
     public void onBackPressed() {
         if(showingGraph == 1) {
@@ -176,11 +200,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
             TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
             TVamount = (TextView)findViewById(R.id.textViewAmountSet);
             TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
-
-            Intent intent = getIntent();
-            episodeType = intent.getStringExtra("episodeType");
-            amount = intent.getIntExtra("transmissions", 0);
-            percentage = intent.getIntExtra("procentTransmission", 0);
 
             TVepisodeType.setText(episodeType);
             TVamount.setText(String.valueOf(amount));
@@ -192,6 +211,12 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
             super.onBackPressed();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle state) {
+        RemovePictures();
+
+        super.onSaveInstanceState(state);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

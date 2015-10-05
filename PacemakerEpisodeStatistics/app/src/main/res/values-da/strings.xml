@@ -6,6 +6,10 @@
     <string name="graph">Se graf</string>
     <string name="percent">Procent:</string>
 
+    <string name="pictureBtn">Billeder</string>
+    <string name="closePicBtn">Luk billeder</string>
+    <string name="seepicz">Se billeder</string>
+
     <string name ="jan">Januar</string>
     <string name ="feb">Februar</string>
     <string name ="mar">Marts</string>
