@@ -29,6 +29,8 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     int newestyear;
 
     public String episodeType;
+    public int amount;
+    public int percentage;
 
     ArrayList<PacemakerDataObject> PacemakerObjects = new ArrayList<PacemakerDataObject>();
     PacemakerDataObject PO;
@@ -53,6 +55,13 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
 
         Intent intent = getIntent();
+        episodeType = intent.getStringExtra("episodeType");
+        amount = intent.getIntExtra("transmissions", 0);
+        percentage = intent.getIntExtra("procentTransmission", 0);
+
+        TVepisodeType.setText(episodeType);
+        TVamount.setText(String.valueOf(amount));
+        TVpercentage.setText(String.valueOf(percentage));
 
         PacemakerObjects = PO.getList();
 
@@ -118,8 +127,7 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
                 }
             }
         }
-
-
+        
         entries.add(new BarEntry(cjan, 0));
         entries.add(new BarEntry(cfeb, 1));
         entries.add(new BarEntry(cmar, 2));
@@ -151,8 +159,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         chart = new BarChart(getBaseContext());
         chart.setData(data);
         chart.setDescription("");
-
-
     }
 
     public void SeeGraph(View v)
