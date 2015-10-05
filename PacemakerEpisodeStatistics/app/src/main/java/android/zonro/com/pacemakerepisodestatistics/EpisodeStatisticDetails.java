@@ -176,11 +176,11 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
             TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
             TVamount = (TextView)findViewById(R.id.textViewAmountSet);
             TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
-
-            Intent intent = getIntent();
-            episodeType = intent.getStringExtra("episodeType");
-            amount = intent.getIntExtra("transmissions", 0);
-            percentage = intent.getIntExtra("procentTransmission", 0);
+//
+//            Intent intent = getIntent();
+//            episodeType = intent.getStringExtra("episodeType");
+//            amount = intent.getIntExtra("transmissions", 0);
+//            percentage = intent.getIntExtra("procentTransmission", 0);
 
             TVepisodeType.setText(episodeType);
             TVamount.setText(String.valueOf(amount));
