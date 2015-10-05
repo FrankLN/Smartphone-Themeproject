@@ -19,6 +19,7 @@
         <activity
             android:name=".EpisodeStatisticDetails"
             android:label="@string/title_activity_episode_statistic_details">
+
         </activity>
         <service
             android:name=".DataService"
