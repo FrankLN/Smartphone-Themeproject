@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Path;
 import android.util.Log;
 
 import java.io.FileOutputStream;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 public class SqlConnect extends SQLiteOpenHelper {
     private static SqlConnect instans = null;
 
-    private static String dbName = "ITSMAP.sqlite";
-    private static String path = "";
+    public static String dbName = "ITSMAP.sqlite";
+    public static String path = "";
     private static SQLiteDatabase sdb;
 
     private ArrayList<PacemakerDataObject> curList;
