@@ -1,10 +1,18 @@
 package android.zonro.com.pacemakerepisodestatistics;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.os.PersistableBundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +33,14 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     public TextView TVepisodeType;
     public TextView TVamount;
     public TextView TVpercentage;
+
+    public TextView TVPMCounter;
+    private static final String KEY_VALUE = "text";
+
+    public int PMCounter = 0;
+
+    PictureFragment frag;
+    FragmentManager manager;
 
     public float cjan, cfeb, cmar, capr, cmay, cjun, cjul, caug, csep, coct, cnov, cdec;
     int newestyear;
@@ -52,9 +68,20 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
 
         setContentView(R.layout.activity_episode_statistic_details);
 
+        frag = new PictureFragment();
+        manager  = getFragmentManager();
+
         TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
         TVamount = (TextView)findViewById(R.id.textViewAmountSet);
         TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
+
+        TVPMCounter = (TextView)findViewById(R.id.textView3);
+        if(savedInstanceState!=null){
+            int savedCounter = savedInstanceState.getInt(KEY_VALUE);
+            PMCounter = savedCounter;
+        }
+
+        TVPMCounter.setText(String.valueOf(PMCounter));
 
         Intent intent = getIntent();
         episodeType = intent.getStringExtra("episodeType");
@@ -160,12 +187,43 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         chart = new BarChart(getBaseContext());
         chart.setData(data);
         chart.setDescription("");
+
+        Intent ServiceIntent=new Intent(this,TimerIntentService.class);
+        startService(ServiceIntent);
     }
 
     public void SeeGraph(View v)
     {
         setContentView(chart);
         showingGraph = 1;
+    }
+
+
+
+    private BroadcastReceiver MyBR = new BroadcastReceiver() {
+
+        @Override
+
+        public void onReceive(Context context, Intent intent) {
+            PMCounter++;
+            TVPMCounter.setText(String.valueOf(PMCounter));
+
+
+        }
+    };
+
+
+    public void StartPictures(View v)
+    {
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.statistic_details_layout, frag,"picfrag");
+        transaction.commit();
+    }
+
+    public void RemovePictures()
+    {
+        if(frag != null)
+            manager.beginTransaction().remove(frag).commit();
     }
 
     @Override
@@ -176,15 +234,12 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
             TVepisodeType = (TextView)findViewById(R.id.textViewEpisodeTypeSet);
             TVamount = (TextView)findViewById(R.id.textViewAmountSet);
             TVpercentage = (TextView)findViewById(R.id.textViewPercentSet);
-//
-//            Intent intent = getIntent();
-//            episodeType = intent.getStringExtra("episodeType");
-//            amount = intent.getIntExtra("transmissions", 0);
-//            percentage = intent.getIntExtra("procentTransmission", 0);
+            TVPMCounter = (TextView) findViewById(R.id.textView3);
 
             TVepisodeType.setText(episodeType);
             TVamount.setText(String.valueOf(amount));
             TVpercentage.setText(String.valueOf(percentage));
+            TVPMCounter.setText(String.valueOf(PMCounter));
             showingGraph = 0;
         }
 
@@ -192,6 +247,24 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
             super.onBackPressed();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle state) {
+        RemovePictures();
+        super.onSaveInstanceState(state);
+        state.putInt(KEY_VALUE,PMCounter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(MyBR);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(MyBR, new IntentFilter("secondPassed"));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

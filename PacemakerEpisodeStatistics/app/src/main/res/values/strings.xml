@@ -13,6 +13,12 @@
     <string name="texttwo">Transmissions</string>
     <string name="textthree">Transmission%</string>
 
+    <string name="pictureBtn">Pictures</string>
+    <string name="closePicBtn">Close pictures</string>
+    <string name="seepicz">See pictures</string>
+
+    <string name="pacemakersImplanted">Pacemakers implanted worldwide since you started this activity: </string>
+
 
     <string name ="jan">Jan</string>
     <string name ="feb">Feb</string>

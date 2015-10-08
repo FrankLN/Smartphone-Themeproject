@@ -6,10 +6,17 @@
     <string name="graph">Se graf</string>
     <string name="percent">Procent:</string>
 
+    <string name="pictureBtn">Billeder</string>
+    <string name="closePicBtn">Luk billeder</string>
+    <string name="seepicz">Se billeder</string>
+
+    <string name="pacemakersImplanted">Pacemakers indopereret verden over siden denne activitys start: </string>
+
     <string name ="jan">Jan</string>
     <string name ="feb">Feb</string>
     <string name ="mar">Mar</string>
     <string name ="apr">Apr</string>
+
     <string name ="may">Maj</string>
     <string name ="jun">Jun</string>
     <string name ="jul">Jul</string>
