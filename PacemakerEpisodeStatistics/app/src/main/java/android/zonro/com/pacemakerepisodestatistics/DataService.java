@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.provider.ContactsContract;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -49,10 +50,15 @@ public class DataService extends Service {
     public DataService()
     {
         Log.d("DataService", "con");
+        init(DataService.this);
+    }
+
+    public void init(final Context context)
+    {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                sCon = SqlConnect.GetSqlConnect(getApplicationContext());
+                sCon = SqlConnect.GetSqlConnect(context);
                 getDbFile();
                 //sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
@@ -110,6 +116,12 @@ public class DataService extends Service {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        sCon.close();
     }
 
 }
