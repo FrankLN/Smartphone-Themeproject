@@ -3,6 +3,7 @@ package android.zonro.com.pacemakerepisodestatistics;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
@@ -10,14 +11,18 @@ import android.os.PowerManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DataService extends Service {
     // Binder given to clients
@@ -48,7 +53,8 @@ public class DataService extends Service {
             @Override
             public void run() {
                 sCon = SqlConnect.GetSqlConnect(getApplicationContext());
-                sCon.createDatabase(getBaseContext());
+                getDbFile();
+                //sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
 
                 Intent intent = new Intent("0");
@@ -70,6 +76,40 @@ public class DataService extends Service {
         sCon.updateData();
         curList = sCon.getCurList();
         return curList;
+    }
+
+    public void getDbFile()
+    {
+        try{
+            URL url = new URL("https://www.dropbox.com/s/h4lom5ara4fd9h3/ITSMAP.sqlite?dl=1");
+            Log.d("Download", SqlConnect.path);
+            File file = new File(SqlConnect.path + "/ITSMAPDownloaded.sqlite");
+
+            URLConnection con = url.openConnection();
+            Log.d("Download", "Connection opened: " + con.toString());
+
+            InputStream is = con.getInputStream();
+            Log.d("Download", "get inputStream: " + is.toString());
+
+            String outFileName = SqlConnect.path +"/"+ SqlConnect.dbName;
+            // Open the empty db as the output stream
+            OutputStream myOutput = new FileOutputStream(outFileName);
+            // transfer bytes from the inputfile to the outputfile
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) != -1)
+            {
+                Log.d("Download", "" + length);
+                myOutput.write(buffer, 0, length);
+            }
+            // Close the streams
+            myOutput.flush();
+            myOutput.close();
+            is.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
