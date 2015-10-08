@@ -1,12 +1,21 @@
 package android.zonro.com.pacemakerepisodestatistics;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,14 +51,6 @@ public class DataService extends Service {
                 sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
 
-                try {
-                    Thread.sleep(2000);
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
-
                 Intent intent = new Intent("0");
                 LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
             }
@@ -70,4 +71,5 @@ public class DataService extends Service {
         curList = sCon.getCurList();
         return curList;
     }
+
 }

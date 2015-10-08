@@ -26,6 +26,10 @@
             android:enabled="true"
             android:exported="false" >
         </service>
+        <service
+            android:name=".TimerIntentService"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
