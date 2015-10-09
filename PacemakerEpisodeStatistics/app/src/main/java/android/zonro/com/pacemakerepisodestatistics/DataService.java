@@ -59,11 +59,13 @@ public class DataService extends Service {
             @Override
             public void run() {
                 sCon = SqlConnect.GetSqlConnect(context);
-                getDbFile();
                 //sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
 
                 Intent intent = new Intent("0");
+                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
+
+                getDbFile();
                 LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
             }
         }).start();
