@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PacemakerEpisodeStatistics</string>
+    <string name="app_name">Pacemaker data</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_episode_statistic_details">EpisodeStatisticDetails</string>
@@ -11,7 +11,7 @@
 
     <string name="textone">Episode type</string>
     <string name="texttwo">Transmissions</string>
-    <string name="textthree">Transmission %</string>
+    <string name="textthree">Transmission%</string>
 
     <string name="pictureBtn">Pictures</string>
     <string name="closePicBtn">Close pictures</string>
