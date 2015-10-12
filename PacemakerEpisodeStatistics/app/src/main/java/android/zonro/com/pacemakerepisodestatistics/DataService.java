@@ -24,7 +24,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// Inspired from: http://developer.android.com/guide/components/bound-services.html
 public class DataService extends Service {
     // Binder given to clients
     private final IBinder mBinder = new LocalBinder();
@@ -86,22 +86,19 @@ public class DataService extends Service {
         return curList;
     }
 
+    // Inspired from: http://www.helloandroid.com/tutorials/how-download-fileimage-url-your-device
     public void getDbFile()
     {
         try{
             URL url = new URL("https://www.dropbox.com/s/h4lom5ara4fd9h3/ITSMAP.sqlite?dl=1");
-            Log.d("Download", SqlConnect.path);
-            File file = new File(SqlConnect.path + "/ITSMAPDownloaded.sqlite");
+            String outFileName = SqlConnect.path +"/"+ SqlConnect.dbName;
 
             URLConnection con = url.openConnection();
-            Log.d("Download", "Connection opened: " + con.toString());
-
             InputStream is = con.getInputStream();
-            Log.d("Download", "get inputStream: " + is.toString());
 
-            String outFileName = SqlConnect.path +"/"+ SqlConnect.dbName;
             // Open the empty db as the output stream
             OutputStream myOutput = new FileOutputStream(outFileName);
+
             // transfer bytes from the inputfile to the outputfile
             byte[] buffer = new byte[1024];
             int length;

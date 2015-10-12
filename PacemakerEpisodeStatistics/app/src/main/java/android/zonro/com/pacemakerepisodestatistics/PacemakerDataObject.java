@@ -19,42 +19,30 @@ public class PacemakerDataObject {
         transmissionsId_ = transmissionsId;
         date_ = date;
     }
-
     public String getEpisodeType()
     {
         return episodeType_;
     }
-
     public void setEpisodeType(String episodeType)
     {
         episodeType_ = episodeType;
     }
-
     public int getTransmissionsId()
     {
         return transmissionsId_;
     }
-
     public void setTransmissionsId(int transmissionsId)
     {
         transmissionsId_ = transmissionsId;
     }
-
     public String getDate()
     {
         return date_;
     }
-
     public void setDate(String date)
     {
         date_ = date;
     }
-
-    public String toString1()
-    {
-        return episodeType_;
-    }
-
     public static ArrayList<PacemakerDataObject> getList()
     {
         ArrayList<PacemakerDataObject> result = new ArrayList<PacemakerDataObject>();

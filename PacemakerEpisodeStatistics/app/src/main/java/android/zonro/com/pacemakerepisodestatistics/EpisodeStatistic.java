@@ -109,6 +109,7 @@ public class EpisodeStatistic extends AppCompatActivity {
                 ep.add(list.get(i).getEpisodeType());
             }
         }
+        //...
 
         // Determine the number of unique transmission each episodeType is part of
         transmissions = new ArrayList<Integer>();
@@ -163,6 +164,11 @@ public class EpisodeStatistic extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         // Register broadcaster
         LocalBroadcastManager.getInstance(this).registerReceiver((receiver),
@@ -170,10 +176,15 @@ public class EpisodeStatistic extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -188,7 +199,7 @@ public class EpisodeStatistic extends AppCompatActivity {
         super.onDestroy();
     }
 
-
+    // Code found on: http://developer.android.com/guide/components/bound-services.html
     /** Defines callbacks for service binding, passed to bindService() */
     private ServiceConnection mConnection = new ServiceConnection() {
 
