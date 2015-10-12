@@ -16,6 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Frank on 01-10-2015.
  */
+// Inspiration from ITSMAP slides.
 public class SqlConnect extends SQLiteOpenHelper {
     private static SqlConnect instans = null;
 
