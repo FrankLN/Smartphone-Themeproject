@@ -107,7 +107,7 @@
         android:layout_below="@+id/ImageButton01"
         android:src="@drawable/picturebtn"
         android:scaleType="fitCenter"
-        android:onClick="StartPictures" />
+      />
 
     <TextView
         android:layout_width="wrap_content"

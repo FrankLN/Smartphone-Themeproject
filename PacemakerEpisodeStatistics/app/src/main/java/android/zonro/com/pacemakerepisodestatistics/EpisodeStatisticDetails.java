@@ -6,20 +6,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
-import android.os.PersistableBundle;
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -52,8 +45,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     ArrayList<String> PacemakerDates = new ArrayList<String>();
     PacemakerDataObject PO;
 
-    public String dataString;
-
     int showingGraph = 0;
 
     //BarChart made following this guide: http://code.tutsplus.com/tutorials/add-charts-to-your-android-app-using-mpandroidchart--cms-23335
@@ -65,7 +56,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_episode_statistic_details);
 
         frag = new PictureFragment();
@@ -93,15 +83,27 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         TVamount.setText(String.valueOf(amount));
         TVpercentage.setText(String.valueOf(percentage));
 
+        graphSetup();
+
+        Intent ServiceIntent=new Intent(this,TimerIntentService.class);
+        startService(ServiceIntent);
+    }
+
+    public void SeeGraph(View v)
+    {
+        setContentView(chart);
+        showingGraph = 1;
+    }
+
+    public void graphSetup(){
         for(int h=0; h<PacemakerDates.size(); h++)
         {
             //upToNCharacters from stackoverflow --- http://stackoverflow.com/questions/1583940/up-to-first-n-characters
             String year = PacemakerDates.get(h).substring(0, Math.min(PacemakerDates.get(h).length(), 4));
 
             if(Integer.parseInt(year) > newestyear)
-            newestyear = Integer.parseInt(year);
+                newestyear = Integer.parseInt(year);
         }
-
 
         for(int i = 0; i< PacemakerDates.size(); i++)
         {
@@ -155,7 +157,7 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
                 }
             }
         }
-        
+
         entries.add(new BarEntry(cjan, 0));
         entries.add(new BarEntry(cfeb, 1));
         entries.add(new BarEntry(cmar, 2));
@@ -187,15 +189,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         chart = new BarChart(getBaseContext());
         chart.setData(data);
         chart.setDescription("");
-
-        Intent ServiceIntent=new Intent(this,TimerIntentService.class);
-        startService(ServiceIntent);
-    }
-
-    public void SeeGraph(View v)
-    {
-        setContentView(chart);
-        showingGraph = 1;
     }
 
 
@@ -207,8 +200,6 @@ public class EpisodeStatisticDetails extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             PMCounter++;
             TVPMCounter.setText(String.valueOf(PMCounter));
-
-
         }
     };
 

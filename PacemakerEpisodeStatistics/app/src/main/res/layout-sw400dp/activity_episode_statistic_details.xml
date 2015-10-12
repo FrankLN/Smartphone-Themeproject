@@ -11,32 +11,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewEpisodeType"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="@string/episode_type"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewEpisodeTypeSet"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/textViewEpisodeType"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="textxxxtxttx"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewAmount"
         android:layout_below="@+id/textViewEpisodeType"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:text="@string/amount"/>
@@ -44,10 +44,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewAmountSet"
         android:layout_below="@+id/textViewEpisodeType"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="21"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/textViewAmount"/>
@@ -57,19 +57,19 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewPercent"
         android:layout_below="@+id/textViewAmount"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="@string/percent"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewPercentSet"
         android:layout_below="@+id/textViewAmount"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="50 %"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/textViewPercent"/>
@@ -77,48 +77,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewGraf"
-        android:layout_below="@+id/textViewPercent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/ImageButton01"
-        android:text="@string/graph"/>
+        android:text="@string/graph"
+        android:layout_below="@+id/textViewEpisodeTypeSet"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="15dp"
         android:id="@+id/ImageButton01"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/textViewPercent"
         android:src="@drawable/btn_graph"
         android:scaleType="fitCenter"
-        android:onClick="SeeGraph"/>
+        android:onClick="SeeGraph"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textViewGraf"
+        android:layout_alignParentRight="true" />
 
     <ImageButton
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="15dp"
         android:id="@+id/ImageButton02"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/ImageButton01"
         android:src="@drawable/picturebtn"
         android:scaleType="fitCenter"
-        android:onClick="StartPictures" />
+        android:onClick="StartPictures"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView"
         android:text="@string/seepicz"
-        android:layout_alignBottom="@+id/ImageButton02"
-        android:layout_alignLeft="@+id/textViewGraf"
-        android:layout_alignStart="@+id/textViewGraf"
-        android:layout_marginBottom="19dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -126,17 +122,21 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/pacemakersImplanted"
         android:id="@+id/textView2"
-        android:layout_below="@+id/ImageButton02"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp" />
+        android:layout_alignTop="@+id/textViewEpisodeTypeSet"
+        android:layout_toLeftOf="@+id/textViewGraf"
+        android:layout_toStartOf="@+id/textViewGraf"
+        android:layout_marginRight="128dp"
+        android:layout_marginEnd="128dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView3"
-        android:layout_below="@id/textView2"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp" />
+        android:layout_alignTop="@+id/textViewGraf"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginLeft="235dp"
+        android:layout_marginStart="235dp" />
 
 </RelativeLayout>
