@@ -47,6 +47,7 @@ public class DataService extends Service {
     }
 
     private SqlConnect sCon;
+    private boolean connected = false;
     public DataService()
     {
         Log.d("DataService", "con");
@@ -61,20 +62,23 @@ public class DataService extends Service {
                 sCon = SqlConnect.GetSqlConnect(context);
                 //sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
-
-                Intent intent = new Intent("0");
-                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
-
-                getDbFile();
-                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
+                connected = true;
             }
         }).start();
     }
 
     public void update()
     {
-        Intent intent = new Intent("0");
-        LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(!connected) ;
+                Intent intent = new Intent("0");
+                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
+                getDbFile();
+                LocalBroadcastManager.getInstance(ins).sendBroadcast(intent);
+            }
+        }).start();
     }
 
     private List<PacemakerDataObject> curList = new ArrayList<PacemakerDataObject>();
@@ -120,6 +124,7 @@ public class DataService extends Service {
     @Override
     public void onDestroy()
     {
+        connected = false;
         sCon.close();
     }
 

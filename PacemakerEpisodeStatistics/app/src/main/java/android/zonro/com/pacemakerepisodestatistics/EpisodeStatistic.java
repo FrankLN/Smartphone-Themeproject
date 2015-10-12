@@ -173,6 +173,15 @@ public class EpisodeStatistic extends AppCompatActivity {
         // Register broadcaster
         LocalBroadcastManager.getInstance(this).registerReceiver((receiver),
                 new IntentFilter("0"));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(!mBound) ;
+
+                mService.update();
+            }
+        }).start();
     }
 
     @Override
