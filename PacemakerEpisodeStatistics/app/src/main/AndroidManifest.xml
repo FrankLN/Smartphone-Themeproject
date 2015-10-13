@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.zonro.com.pacemakerepisodestatistics" >
+    package="android.zonro.com.e15.grp15.pacemakerepisodestatistics" >
 
     <application
         android:allowBackup="true"
