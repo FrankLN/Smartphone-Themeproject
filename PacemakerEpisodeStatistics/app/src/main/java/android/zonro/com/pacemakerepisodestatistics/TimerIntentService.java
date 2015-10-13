@@ -3,7 +3,6 @@ package android.zonro.com.pacemakerepisodestatistics;
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import android.widget.Toast;
 
 
 public class TimerIntentService extends IntentService {
@@ -17,7 +16,6 @@ public class TimerIntentService extends IntentService {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    //service actions on a new thread so user can still interact with the UI
     @Override
     protected void onHandleIntent(Intent intent) {
 

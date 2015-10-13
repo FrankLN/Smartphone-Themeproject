@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textViewAmountSet"
         android:layout_below="@+id/textViewEpisodeType"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="21"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/textViewAmount"/>
