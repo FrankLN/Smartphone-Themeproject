@@ -1,10 +1,9 @@
-package android.zonro.com.pacemakerepisodestatistics;
+package android.zonro.com.e15.grp15.pacemakerepisodestatistics;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Path;
 import android.util.Log;
 
 import java.io.FileOutputStream;

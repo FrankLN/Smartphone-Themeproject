@@ -1,9 +1,8 @@
-package android.zonro.com.pacemakerepisodestatistics;
+package android.zonro.com.e15.grp15.pacemakerepisodestatistics;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import android.widget.Toast;
 
 
 public class TimerIntentService extends IntentService {

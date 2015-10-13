@@ -1,4 +1,4 @@
-package android.zonro.com.pacemakerepisodestatistics;
+package android.zonro.com.e15.grp15.pacemakerepisodestatistics;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -6,20 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.content.pm.ActivityInfo;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;

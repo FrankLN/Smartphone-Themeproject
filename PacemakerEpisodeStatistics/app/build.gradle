@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.0"
 
     defaultConfig {
-        applicationId "android.zonro.com.pacemakerepisodestatistics"
+        applicationId "android.zonro.com.e15.grp15.pacemakerepisodestatistics"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

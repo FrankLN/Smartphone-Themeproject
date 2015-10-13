@@ -1,24 +1,17 @@
-package android.zonro.com.pacemakerepisodestatistics;
+package android.zonro.com.e15.grp15.pacemakerepisodestatistics;
 
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.provider.ContactsContract;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -60,7 +53,9 @@ public class DataService extends Service {
             @Override
             public void run() {
                 sCon = SqlConnect.GetSqlConnect(context);
-                //sCon.createDatabase(getBaseContext());
+                File file = new File(SqlConnect.path +"/"+ SqlConnect.dbName);
+                if(!file.exists())
+                    sCon.createDatabase(getBaseContext());
                 sCon.openDatabase();
                 connected = true;
             }
